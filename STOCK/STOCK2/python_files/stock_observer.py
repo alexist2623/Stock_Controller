@@ -32,7 +32,7 @@ def get_sise_usa(stock_name):
 	for span in spans:
 		if 'Trsdu(0.3s) Fw(b)' in str(span):
 			data_list.update(price = span.text)
-		if 'Trsdu(0.3s)' in str(span) and '103' in str(span):
+		if 'Trsdu(0.3s)' in str(span) and '103' in str(span).replace(span.text,''):
 			data_list.update(open = span.text)
 	return data_list
 
@@ -127,7 +127,7 @@ if __name__ == '__main__':
 	stock_list_usa = {
 				'TESLA                 ':['TSLA',   500,   417],\
 				'Nvdia                 ':['NVDA',   550,   495],\
-				'Apple                 ':['AAPL',   104,   109]
+				'Apple                 ':['AAPL',   104,   112.89]
 			}
 	thread = threading.Thread(target = check_end)
 	thread.daemon = True
